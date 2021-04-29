@@ -10,7 +10,7 @@ REGRESS_OPTS = --inputdir=test --load-language=plpgsql
 MODULE_big   = $(EXTENSION)
 OBJS 				 = src/ldap_fdw.o
 PG_CONFIG    = `which pg_config`
-SHLIB_LINK	 += -lldap
+SHLIB_LINK	 += -lldap -llber
 
 PG91         = $(shell $(PG_CONFIG) --version | grep -qE " 8\.| 9\.0" && echo no || echo yes)
 

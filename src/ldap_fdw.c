@@ -105,6 +105,9 @@ ldapGetForeignPaths(PlannerInfo *root,
 
   add_path(baserel, (Path *)
            create_foreignscan_path(root, baserel,
+#if PG_VERSION_NUM >= 90600
+                                   NULL, /* PathTarget */
+#endif
                                    baserel->rows, startup_cost, total_cost,
                                    NIL, NULL, NULL
 #if PG_VERSION_NUM >= 90500
